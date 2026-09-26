@@ -1,0 +1,15 @@
+Review,Result,Confidence
+"Excellent product, amazing quality and very useful.",LIKELY GENUINE,54.48
+"Best product ever, everyone must buy this!",POSSIBLY FAKE,60.83
+Product arrived on time and packaging was good.,LIKELY GENUINE,53.11
+"Very bad product, completely useless and fake.",POSSIBLY FAKE,52.29
+"Awesome quality, I am extremely happy with my purchase.",LIKELY GENUINE,58.79
+Cheap quality and not worth the money.,LIKELY GENUINE,57.38
+"Good product, works as described.",LIKELY GENUINE,56.23
+Five stars! This product changed my life completely!,POSSIBLY FAKE,53.64
+Product stopped working after two days.,POSSIBLY FAKE,52.29
+Nice product and reasonable price.,LIKELY GENUINE,53.11
+The quality is excellent and delivery was fast.,LIKELY GENUINE,58.77
+Worst purchase I have ever made.,LIKELY GENUINE,53.56
+Product looks exactly like the pictures.,POSSIBLY FAKE,52.29
+"Amazing amazing amazing, must buy immediately!",POSSIBLY FAKE,62.18

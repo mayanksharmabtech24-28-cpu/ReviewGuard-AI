@@ -1,0 +1,6 @@
+{
+    "test_accuracy": 75.0,
+    "training_reviews": 16,
+    "testing_reviews": 4,
+    "total_reviews": 20
+}

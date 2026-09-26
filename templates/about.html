@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ReviewGuard AI</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        nav h2 {
+            color: #3157d5;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #172033;
+            margin-left: 25px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #3157d5;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #3157d5;
+        }
+
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tech span {
+            background: #eef2ff;
+            padding: 10px 16px;
+            border-radius: 20px;
+            color: #3157d5;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>🛡️ ReviewGuard AI</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/about">About</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>About ReviewGuard AI</h1>
+        <p>
+            An AI-powered system for detecting potentially fake product reviews.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Project Objective</h2>
+        <p>
+            ReviewGuard AI is designed to analyse product reviews and identify
+            whether a review is potentially fake or likely genuine using
+            Natural Language Processing and Machine Learning.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>🔍 How It Works</h2>
+
+        <p><strong>1. Review Input:</strong> User enters a product review.</p>
+
+        <p><strong>2. Text Processing:</strong> The review is converted into
+        numerical features using TF-IDF.</p>
+
+        <p><strong>3. Machine Learning:</strong> The trained classification
+        model analyses the review.</p>
+
+        <p><strong>4. Prediction:</strong> The system predicts whether the
+        review is potentially fake or likely genuine.</p>
+
+        <p><strong>5. Confidence:</strong> The system displays a confidence
+        percentage for the prediction.</p>
+    </div>
+
+    <div class="card">
+        <h2>🧠 Machine Learning</h2>
+
+        <p>
+            ReviewGuard AI uses Natural Language Processing techniques to
+            process review text and a Machine Learning classification model
+            trained using labelled review data.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>⚙️ Technologies Used</h2>
+
+        <div class="tech">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>Machine Learning</span>
+            <span>Scikit-learn</span>
+            <span>TF-IDF</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>CSV Dataset</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🛡️ Key Features</h2>
+
+        <p>✔ Fake review detection</p>
+        <p>✔ Genuine review detection</p>
+        <p>✔ Confidence score</p>
+        <p>✔ Machine Learning based prediction</p>
+        <p>✔ Interactive web interface</p>
+        <p>✔ Dashboard for project statistics</p>
+    </div>
+
+</div>
+
+</body>
+</html>

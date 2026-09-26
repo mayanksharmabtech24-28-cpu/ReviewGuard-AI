@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - ReviewGuard AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+            color: #172033;
+        }
+
+        /* Navbar */
+        nav {
+            height: 75px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #315bdc;
+        }
+
+        .logo span {
+            color: #172033;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #172033;
+            margin-left: 35px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #315bdc;
+        }
+
+        /* Main */
+        .container {
+            width: 86%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 55px 0;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .heading h1 {
+            font-size: 46px;
+            color: #315bdc;
+            margin-bottom: 12px;
+        }
+
+        .heading p {
+            font-size: 18px;
+            color: #64748b;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .number {
+            font-size: 34px;
+            font-weight: bold;
+            color: #315bdc;
+            margin-bottom: 8px;
+        }
+
+        .label {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        /* Section */
+        .section {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 27px;
+        }
+
+        /* Progress */
+        .progress-box {
+            margin-bottom: 25px;
+        }
+
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .progress {
+            width: 100%;
+            height: 18px;
+            background: #e5eaf4;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .genuine {
+            background: #315bdc;
+        }
+
+        .fake {
+            background: #f59e0b;
+        }
+
+        /* Prediction Badges */
+        .badge-genuine {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .badge-fake {
+            display: inline-block;
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* History Table */
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table th {
+            padding: 15px;
+            text-align: left;
+            background: #f1f5ff;
+        }
+
+        .history-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5eaf4;
+        }
+
+        .history-table th:nth-child(3),
+        .history-table th:nth-child(4),
+        .history-table td:nth-child(3),
+        .history-table td:nth-child(4) {
+            text-align: center;
+        }
+
+        .review-text {
+            max-width: 650px;
+            line-height: 1.5;
+        }
+
+        /* Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info {
+            background: #f7f9ff;
+            padding: 22px;
+            border-radius: 12px;
+        }
+
+        .info h3 {
+            color: #315bdc;
+            margin-bottom: 8px;
+        }
+
+        .info p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Chart */
+        .chart-section {
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 400px;
+            height: 320px;
+            margin: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-table {
+                min-width: 750px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav a {
+                margin-left: 12px;
+                font-size: 14px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .heading h1 {
+                font-size: 34px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+
+        <div class="logo">
+            🛡️ ReviewGuard <span>AI</span>
+        </div>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <div class="heading">
+            <h1>ReviewGuard AI Dashboard</h1>
+
+            <p>
+                Overview of the Fake Review Detection System
+            </p>
+        </div>
+
+
+        <!-- Statistics Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🎯</div>
+
+                <div class="number">
+                    {{ accuracy }}%
+                </div>
+
+                <div class="label">
+                    Model Accuracy
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📝</div>
+
+                <div class="number">
+                    {{ total_reviews }}
+                </div>
+
+                <div class="label">
+                    Total Reviews
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">✅</div>
+
+                <div class="number">
+                    {{ genuine_reviews }}
+                </div>
+
+                <div class="label">
+                    Genuine Reviews
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">⚠️</div>
+
+                <div class="number">
+                    {{ fake_reviews }}
+                </div>
+
+                <div class="label">
+                    Fake Reviews
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Review Analysis -->
+        <div class="section">
+
+            <h2>Review Analysis</h2>
+
+            {% if total_reviews > 0 %}
+                {% set genuine_percent = (genuine_reviews / total_reviews * 100) | round(1) %}
+                {% set fake_percent = (fake_reviews / total_reviews * 100) | round(1) %}
+            {% else %}
+                {% set genuine_percent = 0 %}
+                {% set fake_percent = 0 %}
+            {% endif %}
+
+
+            <div class="progress-box">
+
+                <div class="progress-title">
+                    <span>Genuine Reviews</span>
+                    <span>{{ genuine_percent }}%</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar genuine"
+                        style="width: {{ genuine_percent }}%;">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="progress-box">
+
+                <div class="progress-title">
+                    <span>Fake Reviews</span>
+                    <span>{{ fake_percent }}%</span>
+                </div>
+
+                <div class="progress">
+                    <div
+                        class="progress-bar fake"
+                        style="width: {{ fake_percent }}%;">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Recent Predictions -->
+        <div class="section">
+
+            <h2>Recent Predictions</h2>
+
+            {% if history %}
+
+            <div style="overflow-x:auto;">
+
+                <table class="history-table">
+
+                    <thead>
+                        <tr>
+
+                            <th>Time</th>
+
+                            <th>Review</th>
+
+                            <th>Result</th>
+
+                            <th>Confidence</th>
+
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for item in history %}
+
+                        <tr>
+
+                            <td>
+                                {{ item[0] }}
+                            </td>
+
+
+                            <td class="review-text">
+                                {{ item[1] }}
+                            </td>
+
+
+                            <td>
+
+                                {% if item[2] == "LIKELY GENUINE" %}
+
+                                    <span class="badge-genuine">
+                                        ✅ LIKELY GENUINE
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge-fake">
+                                        ⚠️ POSSIBLY FAKE
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+                                {{ item[3] }}%
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <p style="text-align:center; color:#64748b;">
+                No predictions yet.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Model Information -->
+        <div class="section">
+
+            <h2>Model Information</h2>
+
+            <div class="info-grid">
+
+                <div class="info">
+
+                    <h3>🤖 Machine Learning</h3>
+
+                    <p>
+                        ReviewGuard AI uses a trained machine learning
+                        classification model to analyse product reviews.
+                    </p>
+
+                </div>
+
+
+                <div class="info">
+
+                    <h3>🔤 Text Processing</h3>
+
+                    <p>
+                        Review text is converted into numerical features
+                        using TF-IDF before classification.
+                    </p>
+
+                </div>
+
+
+                <div class="info">
+
+                    <h3>📊 Prediction</h3>
+
+                    <p>
+                        The system predicts whether a submitted review is
+                        potentially fake or likely genuine.
+                    </p>
+
+                </div>
+
+
+                <div class="info">
+
+                    <h3>🎯 Confidence</h3>
+
+                    <p>
+                        The application also provides a confidence
+                        percentage for every prediction.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Review Distribution Chart -->
+    <div class="section chart-section">
+
+        <h2>Review Distribution</h2>
+
+        <div class="chart-container">
+            <canvas id="reviewChart"></canvas>
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 ReviewGuard AI | Fake Review Detection System
+    </footer>
+
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+
+        const genuineReviews = {{ genuine_reviews }};
+        const fakeReviews = {{ fake_reviews }};
+
+        const ctx = document.getElementById("reviewChart");
+
+        new Chart(ctx, {
+
+            type: "pie",
+
+            data: {
+
+                labels: [
+                    "Genuine Reviews",
+                    "Fake Reviews"
+                ],
+
+                datasets: [{
+                    data: [
+                        genuineReviews,
+                        fakeReviews
+                    ]
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        position: "bottom"
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
