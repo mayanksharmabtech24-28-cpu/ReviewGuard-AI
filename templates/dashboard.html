@@ -1,503 +1,1685 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard - ReviewGuard AI</title>
 
     <style>
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #f4f7fc;
-            color: #172033;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+
+            color: #17213d;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 5% 10%,
+                    rgba(79, 142, 255, 0.20),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 95% 15%,
+                    rgba(137, 65, 239, 0.17),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f7faff 0%,
+                    #f3f6ff 50%,
+                    #ffffff 100%
+                );
         }
 
-        /* Navbar */
-        nav {
-            height: 75px;
-            background: white;
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            width: calc(100% - 70px);
+
+            max-width: 1320px;
+
+            margin: 18px auto 0;
+
+            padding: 15px 24px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
-            padding: 0 8%;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+
+            background:
+                rgba(255, 255, 255, 0.90);
+
+            backdrop-filter: blur(18px);
+
+            border:
+                1px solid rgba(255,255,255,0.8);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 40px
+                rgba(51, 74, 130, 0.10);
+
+            position: relative;
+
+            z-index: 10;
         }
 
-        .logo {
-            font-size: 27px;
-            font-weight: bold;
-            color: #315bdc;
-        }
 
-        .logo span {
-            color: #172033;
-        }
+        .brand {
 
-        nav a {
-            text-decoration: none;
-            color: #172033;
-            margin-left: 35px;
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            color: #315bdc;
-        }
-
-        /* Main */
-        .container {
-            width: 86%;
-            max-width: 1250px;
-            margin: auto;
-            padding: 55px 0;
-        }
-
-        .heading {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .heading h1 {
-            font-size: 46px;
-            color: #315bdc;
-            margin-bottom: 12px;
-        }
-
-        .heading p {
-            font-size: 18px;
-            color: #64748b;
-        }
-
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-            margin-bottom: 35px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 18px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-        }
-
-        .icon {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
-
-        .number {
-            font-size: 34px;
-            font-weight: bold;
-            color: #315bdc;
-            margin-bottom: 8px;
-        }
-
-        .label {
-            color: #64748b;
-            font-size: 16px;
-        }
-
-        /* Section */
-        .section {
-            background: white;
-            padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-            margin-bottom: 30px;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 27px;
-        }
-
-        /* Progress */
-        .progress-box {
-            margin-bottom: 25px;
-        }
-
-        .progress-title {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: bold;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
         }
 
-        .progress {
-            width: 100%;
-            height: 18px;
-            background: #e5eaf4;
-            border-radius: 20px;
-            overflow: hidden;
+
+        .brand-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #155df5,
+                    #6425e8
+                );
+
+            color: white;
+
+            font-size: 22px;
+
+            box-shadow:
+                0 8px 20px
+                rgba(65,71,235,0.25);
         }
 
-        .progress-bar {
-            height: 100%;
-            border-radius: 20px;
+
+        .brand-name {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: #17213d;
         }
 
-        .genuine {
-            background: #315bdc;
+
+        .brand-name span {
+
+            color: #394eea;
         }
 
-        .fake {
-            background: #f59e0b;
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
         }
 
-        /* Prediction Badges */
-        .badge-genuine {
-            display: inline-block;
-            background: #dcfce7;
-            color: #15803d;
-            padding: 7px 13px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            white-space: nowrap;
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #59647d;
+
+            font-size: 14px;
+
+            font-weight: 650;
+
+            padding: 10px 15px;
+
+            border-radius: 11px;
+
+            transition: 0.2s;
         }
 
-        .badge-fake {
-            display: inline-block;
-            background: #fee2e2;
-            color: #dc2626;
-            padding: 7px 13px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            white-space: nowrap;
+
+        .nav-links a:hover {
+
+            color: #3157e8;
+
+            background: #eef3ff;
         }
 
-        /* History Table */
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
+
+        .nav-links a.active {
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2857ed,
+                    #7024e9
+                );
+
+            box-shadow:
+                0 7px 18px
+                rgba(77,55,230,0.20);
         }
 
-        .history-table th {
-            padding: 15px;
-            text-align: left;
-            background: #f1f5ff;
-        }
 
-        .history-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e5eaf4;
-        }
+        /* =========================
+           PAGE HEADER
+        ========================= */
 
-        .history-table th:nth-child(3),
-        .history-table th:nth-child(4),
-        .history-table td:nth-child(3),
-        .history-table td:nth-child(4) {
+        .dashboard-header {
+
+            max-width: 1100px;
+
+            margin: 62px auto 38px;
+
+            padding: 0 20px;
+
             text-align: center;
         }
 
-        .review-text {
-            max-width: 650px;
-            line-height: 1.5;
+
+        .dashboard-badge {
+
+            display: inline-block;
+
+            padding: 9px 17px;
+
+            border-radius: 30px;
+
+            background: #eaf0ff;
+
+            color: #3659d6;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
         }
 
-        /* Info */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+
+        .dashboard-header h1 {
+
+            font-size:
+                clamp(40px, 5vw, 62px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #155df5,
+                    #6927e9
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
         }
 
-        .info {
-            background: #f7f9ff;
-            padding: 22px;
-            border-radius: 12px;
-        }
 
-        .info h3 {
-            color: #315bdc;
-            margin-bottom: 8px;
-        }
+        .dashboard-header p {
 
-        .info p {
-            color: #64748b;
+            color: #66718b;
+
+            font-size: 16px;
+
             line-height: 1.6;
         }
 
-        /* Chart */
-        .chart-section {
-            max-width: 700px;
-            margin: 30px auto;
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1320px;
+
+            margin: 0 auto;
+
+            padding: 0 20px 45px;
         }
 
-        .chart-container {
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .stat-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 185px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #e0e7f5;
+
+            box-shadow:
+                0 16px 45px
+                rgba(54,73,120,0.09);
+
+            transition: 0.25s;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 20px 50px
+                rgba(54,73,120,0.14);
+        }
+
+
+        .stat-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+
+            height: 130px;
+
+            border-radius: 50%;
+
+            right: -60px;
+
+            top: -60px;
+
+            background: #edf2ff;
+        }
+
+
+        .stat-icon {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            margin-bottom: 18px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .stat-card.accuracy .stat-icon {
+
+            background: #e8efff;
+        }
+
+
+        .stat-card.total .stat-icon {
+
+            background: #f1eaff;
+        }
+
+
+        .stat-card.genuine .stat-icon {
+
+            background: #e5f8ec;
+        }
+
+
+        .stat-card.fake .stat-icon {
+
+            background: #fff0e0;
+        }
+
+
+        .stat-number {
+
+            position: relative;
+
+            z-index: 1;
+
+            font-size: 32px;
+
+            font-weight: 900;
+
+            color: #315be0;
+
+            margin-bottom: 4px;
+        }
+
+
+        .stat-card.total .stat-number {
+
+            color: #673de0;
+        }
+
+
+        .stat-card.genuine .stat-number {
+
+            color: #159447;
+        }
+
+
+        .stat-card.fake .stat-number {
+
+            color: #e18b00;
+        }
+
+
+        .stat-label {
+
+            position: relative;
+
+            z-index: 1;
+
+            color: #69738c;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           ANALYSIS CARD
+        ========================= */
+
+        .analysis-card {
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #e0e7f5;
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(54,73,120,0.09);
+
+            margin-bottom: 22px;
+        }
+
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 28px;
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+        }
+
+
+        .section-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 13px;
+
+            background: #eaf0ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+
+        .section-title h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .section-title p {
+
+            font-size: 12px;
+
+            color: #707b94;
+        }
+
+
+        .analysis-badge {
+
+            padding: 9px 14px;
+
+            border-radius: 20px;
+
+            background: #f1f4fb;
+
+            color: #66718a;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .bar-group {
+
+            margin-bottom: 25px;
+        }
+
+
+        .bar-group:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .bar-info {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 9px;
+
+            font-size: 14px;
+
+            font-weight: 750;
+        }
+
+
+        .bar-percent {
+
+            color: #52607c;
+        }
+
+
+        .bar-background {
+
+            height: 13px;
+
             width: 100%;
-            max-width: 400px;
-            height: 320px;
+
+            background: #e7ebf4;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+        }
+
+
+        .bar-fill {
+
+            height: 100%;
+
+            border-radius: 30px;
+
+            transition: width 0.5s ease;
+        }
+
+
+        .genuine-bar {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #4166dd
+                );
+        }
+
+
+        .fake-bar {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffae19,
+                    #f48b00
+                );
+        }
+
+
+        /* =========================
+           TWO INFO CARDS
+        ========================= */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .info-card {
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #e0e7f5;
+
+            box-shadow:
+                0 15px 40px
+                rgba(54,73,120,0.07);
+        }
+
+
+        .info-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .info-card > p {
+
+            color: #707a92;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .model-box {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 17px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0f5ff,
+                    #f7f2ff
+                );
+        }
+
+
+        .model-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #e3ebff;
+
+            font-size: 21px;
+        }
+
+
+        .model-box strong {
+
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .model-box span {
+
+            color: #6c7790;
+
+            font-size: 12px;
+        }
+
+
+        .legend-item {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom:
+                1px solid #edf0f6;
+        }
+
+
+        .legend-item:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .legend-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 13px;
+
+            font-weight: 650;
+        }
+
+
+        .dot {
+
+            width: 10px;
+
+            height: 10px;
+
+            border-radius: 50%;
+        }
+
+
+        .blue-dot {
+
+            background: #315ee2;
+        }
+
+
+        .orange-dot {
+
+            background: #f49a08;
+        }
+
+
+        .legend-value {
+
+            font-weight: 800;
+
+            color: #4f5b75;
+        }
+
+
+        /* =========================
+           HISTORY
+        ========================= */
+
+        .history-card {
+
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #e0e7f5;
+
+            border-radius: 24px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(54,73,120,0.09);
+
+            overflow: hidden;
+        }
+
+
+        .history-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+
+        thead th {
+
+            text-align: left;
+
+            padding: 14px 15px;
+
+            background: #f5f7fc;
+
+            color: #56627d;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+        }
+
+
+        thead th:first-child {
+
+            border-radius: 10px 0 0 10px;
+        }
+
+
+        thead th:last-child {
+
+            border-radius: 0 10px 10px 0;
+        }
+
+
+        tbody td {
+
+            padding: 16px 15px;
+
+            border-bottom:
+                1px solid #edf0f6;
+
+            color: #4e5a74;
+
+            font-size: 13px;
+
+            vertical-align: top;
+        }
+
+
+        tbody tr:last-child td {
+
+            border-bottom: none;
+        }
+
+
+        tbody tr:hover {
+
+            background: #fafbff;
+        }
+
+
+        .review-cell {
+
+            max-width: 480px;
+
+            line-height: 1.5;
+
+            color: #28334e;
+
+            font-weight: 550;
+        }
+
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        .status.genuine {
+
+            color: #128341;
+
+            background: #e7f8ed;
+        }
+
+
+        .status.fake {
+
+            color: #c93333;
+
+            background: #ffebeb;
+        }
+
+
+        .confidence-value {
+
+            font-weight: 800;
+
+            color: #4d5b77;
+        }
+
+
+        .empty-history {
+
+            padding: 55px 20px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8faff,
+                    #f4f6ff
+                );
+        }
+
+
+        .empty-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 50%;
+
+            background: #eaf0ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            font-size: 29px;
+        }
+
+
+        .empty-history h3 {
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+
+        .empty-history p {
+
+            color: #6c7790;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            max-width: 450px;
+
             margin: auto;
         }
 
-        /* Footer */
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
-            text-align: center;
-            padding: 25px;
-            color: #64748b;
-            font-size: 14px;
+
+            max-width: 1320px;
+
+            margin: 5px auto 0;
+
+            padding:
+                25px 20px 35px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            color: #69738b;
+
+            font-size: 13px;
         }
 
-        /* Mobile */
-        @media (max-width: 900px) {
 
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
+        footer strong {
+
+            color: #5429e8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+
+                width: calc(100% - 30px);
             }
 
+
+            .stats-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
             .info-grid {
+
                 grid-template-columns: 1fr;
             }
 
-            .history-table {
-                min-width: 750px;
-            }
         }
 
-        @media (max-width: 600px) {
 
-            nav {
-                padding: 0 5%;
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                padding: 12px 15px;
             }
 
-            nav a {
-                margin-left: 12px;
+
+            .brand-name {
+
+                font-size: 17px;
+            }
+
+
+            .nav-links a {
+
+                display: none;
+            }
+
+
+            .nav-links a.active {
+
+                display: block;
+            }
+
+
+            .dashboard-header {
+
+                margin-top: 45px;
+            }
+
+
+            .dashboard-header h1 {
+
+                font-size: 39px;
+
+                letter-spacing: -1.5px;
+            }
+
+
+            .dashboard-header p {
+
                 font-size: 14px;
             }
 
-            .container {
-                width: 92%;
-            }
 
-            .heading h1 {
-                font-size: 34px;
-            }
+            .stats-grid {
 
-            .cards {
                 grid-template-columns: 1fr;
             }
 
-            .section {
-                padding: 22px;
+
+            .stat-card {
+
+                min-height: 155px;
             }
+
+
+            .analysis-card,
+            .history-card {
+
+                padding: 20px;
+            }
+
+
+            .section-header {
+
+                align-items: flex-start;
+
+                gap: 12px;
+
+                flex-direction: column;
+            }
+
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                text-align: center;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Navbar -->
-    <nav>
 
-        <div class="logo">
-            🛡️ ReviewGuard <span>AI</span>
-        </div>
+    <!-- =====================================
+         NAVBAR
+    ===================================== -->
 
-        <div>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/about">About</a>
+    <nav class="navbar">
+
+        <a href="/" class="brand">
+
+            <div class="brand-icon">
+                🛡️
+            </div>
+
+            <div class="brand-name">
+                ReviewGuard <span>AI</span>
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="/">
+                🏠 Home
+            </a>
+
+            <a
+                href="/dashboard"
+                class="active"
+            >
+                📊 Dashboard
+            </a>
+
+            <a href="/about">
+                ℹ️ About
+            </a>
+
         </div>
 
     </nav>
 
 
-    <!-- Main Content -->
-    <div class="container">
 
-        <div class="heading">
-            <h1>ReviewGuard AI Dashboard</h1>
+    <!-- =====================================
+         HEADER
+    ===================================== -->
 
-            <p>
-                Overview of the Fake Review Detection System
-            </p>
+    <section class="dashboard-header">
+
+        <div class="dashboard-badge">
+            📊 AI Analysis Dashboard
         </div>
 
 
-        <!-- Statistics Cards -->
-        <div class="cards">
+        <h1>
+            ReviewGuard AI
+            <br>
+            Dashboard
+        </h1>
 
-            <div class="card">
-                <div class="icon">🎯</div>
 
-                <div class="number">
+        <p>
+            Monitor review classification results,
+            model performance and recent analysis activity
+            in one place.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================
+         MAIN
+    ===================================== -->
+
+    <main class="container">
+
+
+        <!-- =====================================
+             STATISTICS
+        ===================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- ACCURACY -->
+
+            <div class="stat-card accuracy">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div class="stat-number">
                     {{ accuracy }}%
                 </div>
 
-                <div class="label">
+                <div class="stat-label">
                     Model Accuracy
                 </div>
+
             </div>
 
 
-            <div class="card">
-                <div class="icon">📝</div>
+            <!-- TOTAL -->
 
-                <div class="number">
+            <div class="stat-card total">
+
+                <div class="stat-icon">
+                    📄
+                </div>
+
+                <div class="stat-number">
                     {{ total_reviews }}
                 </div>
 
-                <div class="label">
+                <div class="stat-label">
                     Total Reviews
                 </div>
+
             </div>
 
 
-            <div class="card">
-                <div class="icon">✅</div>
+            <!-- GENUINE -->
 
-                <div class="number">
+            <div class="stat-card genuine">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div class="stat-number">
                     {{ genuine_reviews }}
                 </div>
 
-                <div class="label">
+                <div class="stat-label">
                     Genuine Reviews
                 </div>
+
             </div>
 
 
-            <div class="card">
-                <div class="icon">⚠️</div>
+            <!-- FAKE -->
 
-                <div class="number">
+            <div class="stat-card fake">
+
+                <div class="stat-icon">
+                    ⚠️
+                </div>
+
+                <div class="stat-number">
                     {{ fake_reviews }}
                 </div>
 
-                <div class="label">
+                <div class="stat-label">
                     Fake Reviews
                 </div>
+
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Review Analysis -->
-        <div class="section">
 
-            <h2>Review Analysis</h2>
+        <!-- =====================================
+             REVIEW ANALYSIS
+        ===================================== -->
+
+        <section class="analysis-card">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div class="section-icon">
+                        📈
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Review Analysis
+                        </h2>
+
+                        <p>
+                            Distribution of analysed review classifications
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-badge">
+                    Live Data
+                </div>
+
+            </div>
+
 
             {% if total_reviews > 0 %}
-                {% set genuine_percent = (genuine_reviews / total_reviews * 100) | round(1) %}
-                {% set fake_percent = (fake_reviews / total_reviews * 100) | round(1) %}
+
+                {% set genuine_percent =
+                    (genuine_reviews / total_reviews * 100)
+                    | round(1)
+                %}
+
+                {% set fake_percent =
+                    (fake_reviews / total_reviews * 100)
+                    | round(1)
+                %}
+
+
+                <!-- GENUINE -->
+
+                <div class="bar-group">
+
+                    <div class="bar-info">
+
+                        <span>
+                            Genuine Reviews
+                        </span>
+
+                        <span class="bar-percent">
+                            {{ genuine_percent }}%
+                        </span>
+
+                    </div>
+
+
+                    <div class="bar-background">
+
+                        <div
+                            class="bar-fill genuine-bar"
+                            style="
+                                width: {{ genuine_percent }}%;
+                            "
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAKE -->
+
+                <div class="bar-group">
+
+                    <div class="bar-info">
+
+                        <span>
+                            Fake Reviews
+                        </span>
+
+                        <span class="bar-percent">
+                            {{ fake_percent }}%
+                        </span>
+
+                    </div>
+
+
+                    <div class="bar-background">
+
+                        <div
+                            class="bar-fill fake-bar"
+                            style="
+                                width: {{ fake_percent }}%;
+                            "
+                        ></div>
+
+                    </div>
+
+                </div>
+
             {% else %}
-                {% set genuine_percent = 0 %}
-                {% set fake_percent = 0 %}
+
+                <div class="empty-history">
+
+                    <div class="empty-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        No review data yet
+                    </h3>
+
+                    <p>
+                        Analyse a review from the Home page
+                        to start building your dashboard.
+                    </p>
+
+                </div>
+
             {% endif %}
 
+        </section>
 
-            <div class="progress-box">
 
-                <div class="progress-title">
-                    <span>Genuine Reviews</span>
-                    <span>{{ genuine_percent }}%</span>
-                </div>
 
-                <div class="progress">
-                    <div
-                        class="progress-bar genuine"
-                        style="width: {{ genuine_percent }}%;">
+        <!-- =====================================
+             INFORMATION
+        ===================================== -->
+
+        <section class="info-grid">
+
+
+            <!-- MODEL -->
+
+            <div class="info-card">
+
+                <h3>
+                    🤖 Machine Learning Model
+                </h3>
+
+                <p>
+                    ReviewGuard AI uses a text classification
+                    pipeline to analyse product review content.
+                </p>
+
+
+                <div class="model-box">
+
+                    <div class="model-icon">
+                        🧠
                     </div>
+
+                    <div>
+
+                        <strong>
+                            TF-IDF + Logistic Regression
+                        </strong>
+
+                        <span>
+                            Natural Language Processing
+                            based classification
+                        </span>
+
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <div class="progress-box">
 
-                <div class="progress-title">
-                    <span>Fake Reviews</span>
-                    <span>{{ fake_percent }}%</span>
+            <!-- CLASSIFICATION -->
+
+            <div class="info-card">
+
+                <h3>
+                    🛡️ Classification Overview
+                </h3>
+
+                <p>
+                    Current distribution of reviews processed
+                    by the system.
+                </p>
+
+
+                <div class="legend-item">
+
+                    <div class="legend-left">
+
+                        <span class="dot blue-dot"></span>
+
+                        Genuine Reviews
+
+                    </div>
+
+                    <div class="legend-value">
+                        {{ genuine_reviews }}
+                    </div>
+
                 </div>
 
-                <div class="progress">
-                    <div
-                        class="progress-bar fake"
-                        style="width: {{ fake_percent }}%;">
+
+                <div class="legend-item">
+
+                    <div class="legend-left">
+
+                        <span class="dot orange-dot"></span>
+
+                        Fake Reviews
+
                     </div>
+
+                    <div class="legend-value">
+                        {{ fake_reviews }}
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- Recent Predictions -->
-        <div class="section">
 
-            <h2>Recent Predictions</h2>
+        <!-- =====================================
+             RECENT HISTORY
+        ===================================== -->
+
+        <section class="history-card">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div class="section-icon">
+                        🕘
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Recent Analysis
+                        </h2>
+
+                        <p>
+                            Latest reviews analysed by ReviewGuard AI
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analysis-badge">
+                    Latest 10
+                </div>
+
+            </div>
+
 
             {% if history %}
 
-            <div style="overflow-x:auto;">
+            <div class="history-table-wrapper">
 
-                <table class="history-table">
+                <table>
 
                     <thead>
+
                         <tr>
 
-                            <th>Time</th>
+                            <th>
+                                Date & Time
+                            </th>
 
-                            <th>Review</th>
+                            <th>
+                                Review
+                            </th>
 
-                            <th>Result</th>
+                            <th>
+                                Result
+                            </th>
 
-                            <th>Confidence</th>
+                            <th>
+                                Confidence
+                            </th>
 
                         </tr>
+
                     </thead>
 
 
                     <tbody>
 
-                        {% for item in history %}
+                        {% for row in history %}
 
                         <tr>
 
                             <td>
-                                {{ item[0] }}
+                                {{ row[0] }}
                             </td>
 
 
-                            <td class="review-text">
-                                {{ item[1] }}
+                            <td class="review-cell">
+
+                                {{ row[1] }}
+
                             </td>
 
 
                             <td>
 
-                                {% if item[2] == "LIKELY GENUINE" %}
+                                {% if "FAKE" in row[2]|upper %}
 
-                                    <span class="badge-genuine">
-                                        ✅ LIKELY GENUINE
-                                    </span>
+                                <span class="status fake">
+                                    ⚠️ {{ row[2] }}
+                                </span>
 
                                 {% else %}
 
-                                    <span class="badge-fake">
-                                        ⚠️ POSSIBLY FAKE
-                                    </span>
+                                <span class="status genuine">
+                                    ✅ {{ row[2] }}
+                                </span>
 
                                 {% endif %}
 
                             </td>
 
 
-                            <td>
-                                {{ item[3] }}%
+                            <td class="confidence-value">
+
+                                {{ row[3] }}%
+
                             </td>
 
                         </tr>
@@ -512,144 +1694,53 @@
 
             {% else %}
 
-            <p style="text-align:center; color:#64748b;">
-                No predictions yet.
-            </p>
+            <div class="empty-history">
 
-            {% endif %}
-
-        </div>
-
-
-        <!-- Model Information -->
-        <div class="section">
-
-            <h2>Model Information</h2>
-
-            <div class="info-grid">
-
-                <div class="info">
-
-                    <h3>🤖 Machine Learning</h3>
-
-                    <p>
-                        ReviewGuard AI uses a trained machine learning
-                        classification model to analyse product reviews.
-                    </p>
-
+                <div class="empty-icon">
+                    📝
                 </div>
 
+                <h3>
+                    No analysis history
+                </h3>
 
-                <div class="info">
-
-                    <h3>🔤 Text Processing</h3>
-
-                    <p>
-                        Review text is converted into numerical features
-                        using TF-IDF before classification.
-                    </p>
-
-                </div>
-
-
-                <div class="info">
-
-                    <h3>📊 Prediction</h3>
-
-                    <p>
-                        The system predicts whether a submitted review is
-                        potentially fake or likely genuine.
-                    </p>
-
-                </div>
-
-
-                <div class="info">
-
-                    <h3>🎯 Confidence</h3>
-
-                    <p>
-                        The application also provides a confidence
-                        percentage for every prediction.
-                    </p>
-
-                </div>
+                <p>
+                    Your analysed reviews will appear here
+                    after you submit reviews from the Home page.
+                </p>
 
             </div>
 
-        </div>
+            {% endif %}
 
-    </div>
-
-
-    <!-- Review Distribution Chart -->
-    <div class="section chart-section">
-
-        <h2>Review Distribution</h2>
-
-        <div class="chart-container">
-            <canvas id="reviewChart"></canvas>
-        </div>
-
-    </div>
+        </section>
 
 
-    <!-- Footer -->
+    </main>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ===================================== -->
+
     <footer>
-        © 2026 ReviewGuard AI | Fake Review Detection System
+
+        <div>
+            © 2026 ReviewGuard AI.
+            All rights reserved.
+        </div>
+
+        <div>
+            Made with ❤️ by
+            <strong>
+                Mayank Sharma
+            </strong>
+        </div>
+
     </footer>
 
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-    <script>
-
-        const genuineReviews = {{ genuine_reviews }};
-        const fakeReviews = {{ fake_reviews }};
-
-        const ctx = document.getElementById("reviewChart");
-
-        new Chart(ctx, {
-
-            type: "pie",
-
-            data: {
-
-                labels: [
-                    "Genuine Reviews",
-                    "Fake Reviews"
-                ],
-
-                datasets: [{
-                    data: [
-                        genuineReviews,
-                        fakeReviews
-                    ]
-                }]
-
-            },
-
-            options: {
-
-                responsive: true,
-
-                maintainAspectRatio: false,
-
-                plugins: {
-
-                    legend: {
-                        position: "bottom"
-                    }
-
-                }
-
-            }
-
-        });
-
-    </script>
-
 </body>
+
 </html>

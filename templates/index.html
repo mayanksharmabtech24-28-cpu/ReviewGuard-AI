@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,25 +18,43 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 110px;
         }
 
         body {
             font-family: Inter, Arial, Helvetica, sans-serif;
             color: #17213d;
+
             background:
-                radial-gradient(circle at 5% 15%, rgba(89, 156, 255, 0.22), transparent 25%),
-                radial-gradient(circle at 95% 20%, rgba(151, 84, 255, 0.20), transparent 25%),
-                linear-gradient(135deg, #f7faff 0%, #f4f6ff 50%, #ffffff 100%);
+                radial-gradient(
+                    circle at 5% 15%,
+                    rgba(89, 156, 255, 0.22),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 95% 20%,
+                    rgba(151, 84, 255, 0.20),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f7faff 0%,
+                    #f4f6ff 50%,
+                    #ffffff 100%
+                );
+
             min-height: 100vh;
         }
 
-        /* =========================
+
+        /* =====================================
            NAVBAR
-        ========================= */
+        ===================================== */
 
         .navbar {
             width: calc(100% - 70px);
             max-width: 1320px;
+
             margin: 18px auto 0;
             padding: 15px 24px;
 
@@ -43,97 +62,151 @@
             align-items: center;
             justify-content: space-between;
 
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.90);
+
             backdrop-filter: blur(18px);
 
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+
             border-radius: 20px;
 
-            box-shadow: 0 12px 40px rgba(51, 74, 130, 0.10);
+            box-shadow:
+                0 12px 40px rgba(51, 74, 130, 0.10);
 
-            position: relative;
-            z-index: 10;
+            position: sticky;
+            top: 15px;
+
+            z-index: 100;
         }
+
 
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
+
             text-decoration: none;
+            flex-shrink: 0;
         }
+
 
         .brand-icon {
             width: 43px;
             height: 43px;
+
             border-radius: 13px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            background: linear-gradient(135deg, #155df5, #6425e8);
-            color: white;
+            background:
+                linear-gradient(
+                    135deg,
+                    #155df5,
+                    #6425e8
+                );
 
+            color: white;
             font-size: 23px;
-            box-shadow: 0 8px 20px rgba(65, 71, 235, 0.28);
+
+            box-shadow:
+                0 8px 20px rgba(65, 71, 235, 0.28);
         }
+
 
         .brand-name {
             font-size: 22px;
             font-weight: 800;
+
             color: #17213d;
+            white-space: nowrap;
         }
+
 
         .brand-name span {
             color: #394eea;
         }
 
+
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 28px;
+            gap: 24px;
         }
+
 
         .nav-links a {
             text-decoration: none;
+
             color: #58627c;
+
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 650;
+
+            white-space: nowrap;
+
             transition: 0.2s;
         }
 
+
         .nav-links a:hover {
             color: #3157e8;
+            transform: translateY(-1px);
         }
+
 
         .creator-badge {
             padding: 11px 18px;
+
             border-radius: 12px;
 
-            background: linear-gradient(135deg, #2655ef, #8a19e9);
+            background:
+                linear-gradient(
+                    135deg,
+                    #2655ef,
+                    #8a19e9
+                );
+
             color: white !important;
 
-            box-shadow: 0 8px 20px rgba(85, 47, 235, 0.22);
+            box-shadow:
+                0 8px 20px rgba(85, 47, 235, 0.22);
         }
 
-        /* =========================
+
+        .creator-badge:hover {
+            color: white !important;
+            transform: translateY(-2px) !important;
+        }
+
+
+
+        /* =====================================
            HERO
-        ========================= */
+        ===================================== */
 
         .hero {
             max-width: 1100px;
-            margin: 65px auto 30px;
+
+            margin: 70px auto 30px;
+
             text-align: center;
+
             padding: 0 20px;
         }
+
 
         .hero-badge {
             display: inline-block;
 
             padding: 9px 17px;
+
             border-radius: 30px;
 
-            background: rgba(228, 237, 255, 0.9);
+            background:
+                rgba(228, 237, 255, 0.9);
+
             color: #3158d9;
 
             font-size: 14px;
@@ -142,53 +215,76 @@
             margin-bottom: 22px;
         }
 
+
         .hero h1 {
-            font-size: clamp(42px, 6vw, 70px);
+            font-size:
+                clamp(42px, 6vw, 70px);
+
             line-height: 1.02;
+
             letter-spacing: -2.5px;
+
             margin-bottom: 22px;
         }
 
+
         .hero h1 .gradient {
-            background: linear-gradient(
-                90deg,
-                #155df5,
-                #552de8,
-                #8d1de8
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #155df5,
+                    #552de8,
+                    #8d1de8
+                );
 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+
         .hero p {
             max-width: 850px;
+
             margin: auto;
 
             color: #56627e;
+
             font-size: 17px;
+
             line-height: 1.7;
         }
 
-        /* =========================
-           HERO FEATURES
-        ========================= */
+
+
+        /* =====================================
+           MINI FEATURES
+        ===================================== */
 
         .mini-features {
             max-width: 950px;
+
             margin: 35px auto 38px;
 
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
             gap: 18px;
+
+            padding: 0 20px;
         }
+
 
         .mini-feature {
             display: flex;
+
             align-items: center;
             justify-content: center;
+
             gap: 10px;
         }
+
 
         .mini-icon {
             width: 48px;
@@ -197,79 +293,115 @@
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             font-size: 21px;
+
             background: #eaf1ff;
+
+            flex-shrink: 0;
         }
 
-        .mini-feature:nth-child(2) .mini-icon {
+
+        .mini-feature:nth-child(2)
+        .mini-icon {
             background: #e4f8e9;
         }
 
-        .mini-feature:nth-child(3) .mini-icon {
+
+        .mini-feature:nth-child(3)
+        .mini-icon {
             background: #f0e7ff;
         }
 
-        .mini-feature:nth-child(4) .mini-icon {
+
+        .mini-feature:nth-child(4)
+        .mini-icon {
             background: #fff0d9;
         }
+
 
         .mini-text {
             text-align: left;
         }
 
+
         .mini-text strong {
             display: block;
+
             font-size: 14px;
         }
 
+
         .mini-text span {
             color: #69738d;
+
             font-size: 12px;
         }
 
-        /* =========================
-           MAIN ANALYSIS
-        ========================= */
+
+
+        /* =====================================
+           ANALYSIS / HOW IT WORKS
+        ===================================== */
 
         .analysis-grid {
             max-width: 1320px;
+
             margin: 0 auto;
 
             padding: 0 20px;
 
             display: grid;
-            grid-template-columns: 1.7fr 1fr;
+
+            grid-template-columns:
+                1.7fr 1fr;
+
             gap: 18px;
+
+            scroll-margin-top: 110px;
         }
 
+
         .card {
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(224, 231, 247, 0.9);
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border:
+                1px solid rgba(224, 231, 247, 0.9);
 
             border-radius: 24px;
 
-            box-shadow: 0 18px 50px rgba(54, 73, 120, 0.10);
+            box-shadow:
+                0 18px 50px
+                rgba(54, 73, 120, 0.10);
 
             padding: 26px;
         }
 
+
         .card-header {
             display: flex;
+
             align-items: center;
             justify-content: space-between;
+
             gap: 15px;
 
             margin-bottom: 18px;
         }
 
+
         .card-title {
             display: flex;
+
             align-items: center;
+
             gap: 12px;
         }
+
 
         .card-title-icon {
             width: 43px;
@@ -278,43 +410,59 @@
             border-radius: 13px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             background: #e9f0ff;
+
             font-size: 22px;
+
+            flex-shrink: 0;
         }
+
 
         .card-title h2 {
             font-size: 21px;
+
             margin-bottom: 4px;
         }
 
+
         .card-title p {
             color: #69738c;
+
             font-size: 13px;
         }
 
+
         .counter {
             padding: 8px 13px;
+
             border-radius: 20px;
 
             background: #f0f4fc;
+
             color: #67718b;
 
             font-size: 12px;
+
             font-weight: 700;
 
             white-space: nowrap;
         }
 
+
         textarea {
             width: 100%;
+
             min-height: 190px;
 
             resize: vertical;
 
-            border: 1.5px solid #dce3f2;
+            border:
+                1.5px solid #dce3f2;
+
             border-radius: 17px;
 
             padding: 19px;
@@ -322,7 +470,9 @@
             outline: none;
 
             font-family: inherit;
+
             font-size: 15px;
+
             line-height: 1.6;
 
             color: #17213d;
@@ -332,12 +482,15 @@
             transition: 0.25s;
         }
 
+
         textarea:focus {
             border-color: #526ce9;
 
             box-shadow:
-                0 0 0 4px rgba(74, 91, 235, 0.10);
+                0 0 0 4px
+                rgba(74, 91, 235, 0.10);
         }
+
 
         .example-box {
             margin-top: 14px;
@@ -346,21 +499,25 @@
 
             border-radius: 14px;
 
-            background: linear-gradient(
-                90deg,
-                #edf4ff,
-                #f4f2ff
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #edf4ff,
+                    #f4f2ff
+                );
 
             color: #52617f;
 
             font-size: 13px;
+
             line-height: 1.5;
         }
+
 
         .example-box strong {
             color: #2559d7;
         }
+
 
         .analyze-btn {
             width: 100%;
@@ -376,39 +533,48 @@
             color: white;
 
             font-size: 16px;
+
             font-weight: 800;
 
             cursor: pointer;
 
-            background: linear-gradient(
-                90deg,
-                #155df5,
-                #6924ed
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #155df5,
+                    #6924ed
+                );
 
             box-shadow:
-                0 10px 25px rgba(58, 65, 236, 0.22);
+                0 10px 25px
+                rgba(58, 65, 236, 0.22);
 
             transition: 0.2s;
         }
+
 
         .analyze-btn:hover {
             transform: translateY(-2px);
 
             box-shadow:
-                0 14px 30px rgba(58, 65, 236, 0.30);
+                0 14px 30px
+                rgba(58, 65, 236, 0.30);
         }
 
-        /* =========================
+
+
+        /* =====================================
            RESULT PANEL
-        ========================= */
+        ===================================== */
 
         .result-panel {
             min-height: 380px;
 
             display: flex;
+
             flex-direction: column;
         }
+
 
         .result-empty {
             flex: 1;
@@ -416,7 +582,9 @@
             min-height: 290px;
 
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
             justify-content: center;
 
@@ -432,15 +600,18 @@
                 );
         }
 
+
         .result-icon {
             width: 76px;
             height: 76px;
 
-            border: 1.5px dashed #8aa9f4;
+            border:
+                1.5px dashed #8aa9f4;
 
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -449,21 +620,29 @@
             margin-bottom: 17px;
         }
 
+
         .result-empty h3 {
             font-size: 19px;
+
             margin-bottom: 8px;
         }
 
+
         .result-empty p {
             color: #68738d;
+
             font-size: 13px;
+
             max-width: 280px;
+
             line-height: 1.6;
         }
 
-        /* =========================
-           RESULT WHEN AVAILABLE
-        ========================= */
+
+
+        /* =====================================
+           RESULT AVAILABLE
+        ===================================== */
 
         .result-box {
             flex: 1;
@@ -471,7 +650,9 @@
             border-radius: 18px;
 
             display: flex;
+
             flex-direction: column;
+
             justify-content: center;
             align-items: center;
 
@@ -480,289 +661,492 @@
             padding: 30px;
         }
 
-        .result-box.genuine {
-            background: linear-gradient(
-                145deg,
-                #effdf4,
-                #e4f8eb
-            );
 
-            border: 1px solid #bcebc9;
+        .result-box.genuine {
+            background:
+                linear-gradient(
+                    145deg,
+                    #effdf4,
+                    #e4f8eb
+                );
+
+            border:
+                1px solid #bcebc9;
         }
+
 
         .result-box.fake {
-            background: linear-gradient(
-                145deg,
-                #fff4f4,
-                #ffebeb
-            );
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff4f4,
+                    #ffebeb
+                );
 
-            border: 1px solid #f1c2c2;
+            border:
+                1px solid #f1c2c2;
         }
+
 
         .result-status {
             font-size: 30px;
+
             font-weight: 900;
+
             margin-bottom: 15px;
         }
+
 
         .genuine .result-status {
             color: #159447;
         }
 
+
         .fake .result-status {
             color: #dc3030;
         }
 
+
         .confidence {
             font-size: 17px;
+
             font-weight: 700;
+
             margin-bottom: 15px;
         }
 
+
         .confidence-bar {
             width: 85%;
+
             height: 10px;
+
             border-radius: 20px;
+
             background: #e1e5ed;
+
             overflow: hidden;
         }
+
 
         .confidence-fill {
             height: 100%;
 
-            background: linear-gradient(
-                90deg,
-                #315ef4,
-                #7227e9
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #315ef4,
+                    #7227e9
+                );
 
             border-radius: 20px;
         }
 
-        /* =========================
+
+
+        /* =====================================
            FEATURE CARDS
-        ========================= */
+        ===================================== */
 
         .feature-grid {
             max-width: 1320px;
+
             margin: 18px auto 0;
 
             padding: 0 20px;
 
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
             gap: 18px;
         }
+
 
         .feature-card {
             padding: 21px;
 
             border-radius: 18px;
 
-            border: 1px solid #e0e7f6;
+            border:
+                1px solid #e0e7f6;
 
-            background: rgba(255,255,255,0.8);
+            background:
+                rgba(255,255,255,0.8);
         }
+
 
         .feature-card h3 {
             font-size: 15px;
+
             margin-bottom: 7px;
         }
 
+
         .feature-card p {
             color: #66718b;
+
             font-size: 12px;
+
             line-height: 1.6;
         }
+
 
         .feature-card.blue {
             background: #f1f6ff;
         }
 
+
         .feature-card.green {
             background: #effcf3;
         }
+
 
         .feature-card.purple {
             background: #f7f0ff;
         }
 
+
         .feature-card.red {
             background: #fff2f2;
         }
 
-        /* =========================
-           ABOUT ME
-        ========================= */
 
-        .about-me {
+
+        /* =====================================
+           BATCH CSV
+        ===================================== */
+
+        .batch-section {
             max-width: 1320px;
+
             margin: 28px auto 0;
+
             padding: 0 20px;
         }
 
+
+        .batch-card {
+            background:
+                rgba(255,255,255,0.94);
+
+            border:
+                1px solid #e0e7f5;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(54,73,120,0.07);
+        }
+
+
+        .batch-card h2 {
+            font-size: 20px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .batch-card p {
+            color: #68738d;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .file-box {
+            border:
+                1.5px dashed #aab8d9;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background: #f8faff;
+        }
+
+
+        .file-box strong {
+            display: block;
+
+            margin-bottom: 10px;
+        }
+
+
+        input[type="file"] {
+            margin-top: 8px;
+        }
+
+
+        .file-note {
+            margin-top: 10px;
+
+            color: #75809a;
+
+            font-size: 12px;
+        }
+
+
+        .upload-btn {
+            width: 100%;
+
+            margin-top: 14px;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background: #17213d;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .upload-btn:hover {
+            background: #26345a;
+
+            transform: translateY(-1px);
+        }
+
+
+
+        /* =====================================
+           ABOUT ME
+        ===================================== */
+
+        .about-me {
+            max-width: 1320px;
+
+            margin: 32px auto 0;
+
+            padding: 0 20px;
+
+            scroll-margin-top: 110px;
+        }
+
+
         .about-card {
-            background: rgba(255,255,255,0.94);
+            position: relative;
 
-            border: 1px solid #e0e6f4;
+            overflow: hidden;
 
-            border-radius: 24px;
+            background:
+                rgba(255,255,255,0.95);
 
-            box-shadow: 0 18px 45px rgba(54,73,120,0.08);
+            border:
+                1px solid #e0e7f5;
 
-            padding: 30px;
+            border-radius: 26px;
+
+            box-shadow:
+                0 20px 55px
+                rgba(54,73,120,0.10);
+
+            padding: 32px;
 
             display: grid;
-            grid-template-columns: 1fr 1.4fr;
+
+            grid-template-columns:
+                0.85fr 1.4fr;
 
             gap: 35px;
 
             align-items: center;
         }
 
-        .about-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+
+        .about-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(38,92,245,0.10),
+                    rgba(119,35,232,0.08)
+                );
+
+            top: -120px;
+            right: -80px;
         }
 
-        .profile-placeholder {
-            width: 95px;
-            height: 95px;
+
+        .about-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(67,104,245,0.06);
+
+            bottom: -100px;
+            left: -60px;
+        }
+
+
+        .about-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        /* PROFILE PHOTO */
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
 
             flex-shrink: 0;
 
             border-radius: 50%;
 
-            background: linear-gradient(
-                135deg,
-                #dce9ff,
-                #e8ddff
-            );
+            overflow: hidden;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #e8edff;
 
-            font-size: 35px;
+            border: 5px solid white;
+
+            box-shadow:
+                0 10px 30px
+                rgba(73,76,220,0.18);
         }
+
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            object-position: center 35%;
+        }
+
 
         .about-label {
-            color: #5263e8;
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 5px;
+            color: #5365e8;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 6px;
         }
+
 
         .about-left h2 {
             font-size: 30px;
 
-            background: linear-gradient(
-                90deg,
-                #155df5,
-                #7225e8
-            );
+            line-height: 1.1;
+
+            margin-bottom: 7px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #155df5,
+                    #7225e8
+                );
 
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
         }
 
+
         .about-left p {
-            color: #6b748b;
-            margin-top: 5px;
+            color: #69738d;
+
             font-size: 13px;
+
+            line-height: 1.5;
+
+            margin-top: 2px;
         }
+
 
         .about-right {
-            border-left: 1px solid #e1e6f2;
+            border-left:
+                1px solid #e1e6f2;
+
             padding-left: 35px;
 
-            color: #56617a;
+            position: relative;
 
-            line-height: 1.8;
-            font-size: 14px;
+            z-index: 1;
         }
+
+
+        .about-right p {
+            color: #59647d;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin: 0;
+        }
+
 
         .about-right strong {
             color: #202a47;
+
+            font-weight: 800;
         }
 
-        /* =========================
-           CSV SECTION
-        ========================= */
 
-        .batch-section {
-            max-width: 1320px;
-            margin: 28px auto 0;
-            padding: 0 20px;
-        }
 
-        .batch-card {
-            background: rgba(255,255,255,0.92);
-            border: 1px solid #e0e7f5;
-            border-radius: 22px;
-            padding: 25px;
-        }
-
-        .batch-card h2 {
-            font-size: 20px;
-            margin-bottom: 7px;
-        }
-
-        .batch-card p {
-            color: #68738d;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .file-box {
-            border: 1.5px dashed #aab8d9;
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            background: #f8faff;
-        }
-
-        .file-box strong {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="file"] {
-            margin-top: 8px;
-        }
-
-        .file-note {
-            margin-top: 10px;
-            color: #75809a;
-            font-size: 12px;
-        }
-
-        .upload-btn {
-            width: 100%;
-            margin-top: 14px;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            background: #17213d;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* =========================
+        /* =====================================
            FOOTER
-        ========================= */
+        ===================================== */
 
         footer {
             max-width: 1320px;
+
             margin: 35px auto 0;
 
-            padding: 25px 20px 35px;
+            padding:
+                25px 20px 35px;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             color: #69738b;
@@ -770,109 +1154,221 @@
             font-size: 13px;
         }
 
+
         footer strong {
             color: #5429e8;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
 
-        @media (max-width: 900px) {
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 1100px) {
 
             .navbar {
-                width: calc(100% - 25px);
+                width: calc(100% - 30px);
             }
 
+
             .nav-links {
-                gap: 12px;
+                gap: 15px;
             }
+
 
             .creator-badge {
                 display: none;
             }
 
+
             .mini-features {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
+
 
             .analysis-grid {
                 grid-template-columns: 1fr;
             }
 
+
             .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
+
 
             .about-card {
                 grid-template-columns: 1fr;
+
+                gap: 30px;
             }
+
 
             .about-right {
                 border-left: none;
-                border-top: 1px solid #e1e6f2;
+
+                border-top:
+                    1px solid #e1e6f2;
+
                 padding-left: 0;
+
                 padding-top: 25px;
             }
+
         }
 
-        @media (max-width: 600px) {
+
+
+        @media (max-width: 750px) {
 
             .navbar {
+                width: calc(100% - 20px);
+
                 padding: 12px 15px;
+
+                top: 8px;
             }
+
 
             .brand-name {
-                font-size: 17px;
+                font-size: 18px;
             }
 
-            .nav-links a:not(.creator-badge) {
+
+            .nav-links {
+                gap: 7px;
+            }
+
+
+            .nav-links a {
+                font-size: 12px;
+
+                padding: 6px;
+            }
+
+
+            .nav-links a:nth-child(3),
+            .nav-links a:nth-child(4) {
                 display: none;
             }
 
+
             .hero {
-                margin-top: 45px;
+                margin-top: 50px;
             }
+
 
             .hero h1 {
                 letter-spacing: -1.5px;
             }
 
+
+            .hero p {
+                font-size: 15px;
+            }
+
+
             .mini-features {
                 grid-template-columns: 1fr;
             }
+
 
             .feature-grid {
                 grid-template-columns: 1fr;
             }
 
+
             .card {
                 padding: 18px;
             }
 
+
+            .about-card {
+                padding: 25px 20px;
+            }
+
+
             .about-left {
                 flex-direction: column;
+
                 text-align: center;
             }
+
+
+            .about-left h2 {
+                font-size: 28px;
+            }
+
+
+            .about-right p {
+                font-size: 13px;
+            }
+
 
             footer {
                 flex-direction: column;
+
                 gap: 10px;
+
                 text-align: center;
             }
+
+        }
+
+
+
+        @media (max-width: 480px) {
+
+            .brand-icon {
+                width: 39px;
+                height: 39px;
+            }
+
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+
+            .card-title h2 {
+                font-size: 18px;
+            }
+
+
+            .counter {
+                display: none;
+            }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- =========================
+
+    <!-- =====================================
          NAVBAR
-    ========================= -->
+    ===================================== -->
 
     <nav class="navbar">
+
+
+        <!-- LOGO -->
 
         <a href="/" class="brand">
 
@@ -887,25 +1383,45 @@
         </a>
 
 
+        <!-- NAVIGATION -->
+
         <div class="nav-links">
+
+
+            <!-- 1. HOME -->
 
             <a href="/">
                 🏠 Home
             </a>
 
-            <a href="#how-it-works">
-                ⚙️ How It Works
-            </a>
 
-            <a href="#about-me">
-                👤 About Me
-            </a>
+            <!-- 2. DASHBOARD -->
 
             <a href="/dashboard">
                 📊 Dashboard
             </a>
 
-            <a href="/about" class="creator-badge">
+
+            <!-- 3. HOW IT WORKS -->
+
+            <a href="#how-it-works">
+                ⚙️ How It Works
+            </a>
+
+
+            <!-- 4. ABOUT ME -->
+
+            <a href="#about-me">
+                👤 About Me
+            </a>
+
+
+            <!-- CREATOR -->
+
+            <a
+                href="#about-me"
+                class="creator-badge"
+            >
                 💜 Made by Mayank Sharma
             </a>
 
@@ -914,9 +1430,10 @@
     </nav>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          HERO
-    ========================= -->
+    ===================================== -->
 
     <section class="hero">
 
@@ -924,29 +1441,40 @@
             🤖 AI Powered Review Detection
         </div>
 
+
         <h1>
+
             Detect
+
             <span class="gradient">
                 Fake Reviews
             </span>
+
             <br>
+
             Before You Trust Them
+
         </h1>
 
+
         <p>
+
             ReviewGuard AI analyses product reviews using
             Natural Language Processing and Machine Learning
             to identify potentially fake or genuine reviews.
+
         </p>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          MINI FEATURES
-    ========================= -->
+    ===================================== -->
 
     <section class="mini-features">
+
 
         <div class="mini-feature">
 
@@ -955,8 +1483,15 @@
             </div>
 
             <div class="mini-text">
-                <strong>AI Powered</strong>
-                <span>Advanced NLP & ML</span>
+
+                <strong>
+                    AI Powered
+                </strong>
+
+                <span>
+                    Advanced NLP & ML
+                </span>
+
             </div>
 
         </div>
@@ -969,8 +1504,15 @@
             </div>
 
             <div class="mini-text">
-                <strong>Smart Classification</strong>
-                <span>ML based detection</span>
+
+                <strong>
+                    Smart Classification
+                </strong>
+
+                <span>
+                    ML based detection
+                </span>
+
             </div>
 
         </div>
@@ -983,8 +1525,15 @@
             </div>
 
             <div class="mini-text">
-                <strong>Secure</strong>
-                <span>Project data handling</span>
+
+                <strong>
+                    Secure
+                </strong>
+
+                <span>
+                    Project data handling
+                </span>
+
             </div>
 
         </div>
@@ -997,8 +1546,15 @@
             </div>
 
             <div class="mini-text">
-                <strong>Real-time</strong>
-                <span>Instant analysis</span>
+
+                <strong>
+                    Real-time
+                </strong>
+
+                <span>
+                    Instant analysis
+                </span>
+
             </div>
 
         </div>
@@ -1006,14 +1562,18 @@
     </section>
 
 
-    <!-- =========================
-         ANALYSIS AREA
-    ========================= -->
 
-    <section class="analysis-grid" id="how-it-works">
+    <!-- =====================================
+         ANALYSIS / HOW IT WORKS
+    ===================================== -->
+
+    <section
+        class="analysis-grid"
+        id="how-it-works"
+    >
 
 
-        <!-- LEFT -->
+        <!-- REVIEW INPUT -->
 
         <div class="card">
 
@@ -1032,7 +1592,8 @@
                         </h2>
 
                         <p>
-                            Paste a product review below and let ReviewGuard AI analyse it.
+                            Paste a product review below and let
+                            ReviewGuard AI analyse it.
                         </p>
 
                     </div>
@@ -1040,14 +1601,20 @@
                 </div>
 
 
-                <div class="counter" id="counter">
+                <div
+                    class="counter"
+                    id="counter"
+                >
                     0 / 1000
                 </div>
 
             </div>
 
 
-            <form method="POST" action="/">
+            <form
+                method="POST"
+                action="/"
+            >
 
                 <textarea
                     name="review"
@@ -1068,7 +1635,8 @@
 
                     The product quality is amazing.
                     I have been using it for two weeks and
-                    the performance is excellent. Highly recommended!
+                    the performance is excellent.
+                    Highly recommended!
 
                 </div>
 
@@ -1085,7 +1653,8 @@
         </div>
 
 
-        <!-- RIGHT -->
+
+        <!-- ANALYSIS RESULT -->
 
         <div class="card result-panel">
 
@@ -1125,7 +1694,8 @@
                     </div>
 
                     <div class="confidence">
-                        Confidence: {{ confidence }}%
+                        Confidence:
+                        {{ confidence }}%
                     </div>
 
                     <div class="confidence-bar">
@@ -1148,7 +1718,8 @@
                     </div>
 
                     <div class="confidence">
-                        Confidence: {{ confidence }}%
+                        Confidence:
+                        {{ confidence }}%
                     </div>
 
                     <div class="confidence-bar">
@@ -1190,11 +1761,13 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          FEATURE CARDS
-    ========================= -->
+    ===================================== -->
 
     <section class="feature-grid">
+
 
         <div class="feature-card blue">
 
@@ -1241,7 +1814,7 @@
         <div class="feature-card red">
 
             <h3>
-                🔐 Project Focused
+                🔐 Academic Project
             </h3>
 
             <p>
@@ -1254,68 +1827,10 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT ME
-    ========================= -->
 
-    <section class="about-me" id="about-me">
-
-        <div class="about-card">
-
-            <div class="about-left">
-
-                <div class="profile-placeholder">
-                    👨‍💻
-                </div>
-
-                <div>
-
-                    <div class="about-label">
-                        About Me
-                    </div>
-
-                    <h2>
-                        Mayank Sharma
-                    </h2>
-
-                    <p>
-                        Creator & Developer of ReviewGuard AI
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="about-right">
-
-                <p>
-
-                    I am <strong>Mayank Sharma</strong>,
-                    the creator of <strong>ReviewGuard AI</strong>.
-
-                    This project uses Natural Language Processing
-                    and Machine Learning to analyse product reviews
-                    and classify them as potentially fake or genuine.
-
-                    <br><br>
-
-                    The goal of this academic project is to demonstrate
-                    how AI and NLP can be applied to improve the
-                    reliability of online product reviews.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CSV BATCH
-    ========================= -->
+    <!-- =====================================
+         BATCH CSV ANALYSIS
+    ===================================== -->
 
     <section class="batch-section">
 
@@ -1327,7 +1842,8 @@
 
             <p>
                 Upload a CSV file containing a column named
-                <strong>review</strong> to analyse multiple reviews at once.
+                <strong>review</strong>
+                to analyse multiple reviews at once.
             </p>
 
 
@@ -1339,7 +1855,12 @@
 
                 <div class="file-box">
 
-                    <div style="font-size: 38px;">
+                    <div
+                        style="
+                            font-size:38px;
+                            margin-bottom:8px;
+                        "
+                    >
                         📁
                     </div>
 
@@ -1355,8 +1876,10 @@
                     >
 
                     <div class="file-note">
+
                         CSV should contain a column named
                         <strong>review</strong>.
+
                     </div>
 
                 </div>
@@ -1376,34 +1899,166 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================
+         ABOUT ME
+    ===================================== -->
+
+    <section
+        class="about-me"
+        id="about-me"
+    >
+
+        <div class="about-card">
+
+
+            <!-- PROFILE -->
+
+            <div class="about-left">
+
+                <div class="profile-photo">
+
+                    <img
+                        src="{{ url_for('static', filename='profile.jpg') }}"
+                        alt="Mayank Sharma"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <div class="about-label">
+                        B.Tech CSE (AI & ML)
+                    </div>
+
+                    <h2>
+                        Mayank Sharma
+                    </h2>
+
+                    <p>
+                        LLOYD INSTITUTE OF ENGINEERING & TECHNOLOGY
+                    </p>
+
+                    <p>
+                        AI & ML Student • Developer
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT INFORMATION -->
+
+            <div class="about-right">
+
+                <p>
+
+                    I am
+                    <strong>Mayank Sharma</strong>,
+                    a
+                    <strong>B.Tech CSE (AI & ML)</strong>
+                    student at
+                    <strong>
+                        LLOYD INSTITUTE OF ENGINEERING & TECHNOLOGY
+                    </strong>
+                    and the creator of
+                    <strong>ReviewGuard AI</strong>.
+
+                    <br><br>
+
+
+                    <strong>
+                        What can you do with ReviewGuard AI?
+                    </strong>
+
+                    <br><br>
+
+
+                    You can enter a product review and the system
+                    analyses it using
+                    <strong>
+                        Artificial Intelligence,
+                        Natural Language Processing (NLP),
+                        and Machine Learning
+                    </strong>
+                    to classify the review as
+                    <strong>
+                        potentially fake or likely genuine
+                    </strong>.
+
+                    <br><br>
+
+
+                    You can also upload a
+                    <strong>
+                        CSV file containing multiple reviews
+                    </strong>
+                    and analyse them together using
+                    <strong>
+                        Batch CSV Analysis
+                    </strong>.
+
+                    <br><br>
+
+
+                    The system also provides a
+                    <strong>
+                        confidence score
+                    </strong>
+                    for each prediction and the results can be
+                    viewed through the
+                    <strong>
+                        Dashboard
+                    </strong>.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
          FOOTER
-    ========================= -->
+    ===================================== -->
 
     <footer>
 
         <div>
-            © 2026 ReviewGuard AI. All rights reserved.
+            © 2026 ReviewGuard AI.
+            All rights reserved.
         </div>
 
+
         <div>
-            Made with ❤️ by
+
+            Made with by
+
             <strong>
                 Mayank Sharma
             </strong>
+
         </div>
 
     </footer>
 
 
-    <!-- =========================
+
+    <!-- =====================================
          JAVASCRIPT
-    ========================= -->
+    ===================================== -->
 
     <script>
 
         const reviewInput =
             document.getElementById("reviewInput");
+
 
         const counter =
             document.getElementById("counter");
